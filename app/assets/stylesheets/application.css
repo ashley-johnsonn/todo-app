@@ -8,3 +8,15 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.task-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 50%;
+}
+
+.task-info {
+  text-align: left;
+  width: 100%;
+}
