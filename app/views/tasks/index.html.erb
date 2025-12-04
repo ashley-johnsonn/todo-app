@@ -1,6 +1,7 @@
 <%# List all tasks %>
 <div class="">
     <h1>To Do List</h1>
+    <%= link_to "New Task", new_task_path %>
     <% @tasks.each do |task| %>
         <%= link_to task_path(task) do %>
             <div class="task-box">

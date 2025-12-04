@@ -1,16 +1,20 @@
 <%# Form to create task %>
-<div>
-    <h1>Create Task</h1>
-    <p>What do you need to do?</p>
-    <%=form_with model: @task, data: { turbo: false } do |form| %>
-        <div>
+<div class="task-form-box">
+    <div>
+        <h1>Create To Do</h1>
+        <p>What do you need to do today?</p>
+    </div>
+    <%=form_with model: @task, class: "task-form", data: { turbo: false } do |form| %>
+        <div class="form-item">
             <%= form.label :title %>
-            <%= form.text_field :title %>
+            <%= form.text_area :title, 
+                class: "text-input"  %>
         </div>
-        <div>
+        <div class="form-item">
             <%= form.label :description %>
-            <%= form.text_field :description %>
+            <%= form.text_area :description, 
+                class: "text-input" %>
         </div>
-        <%= form.submit "Add Task" %>
+        <%= form.submit "Add Task", class: "submit-button" %>
     <% end %>
 </div>
