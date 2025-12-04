@@ -3,7 +3,7 @@
     <h1><%= Time.now.strftime("%A, %b %d %Y") %></h1>
     
     <div class="list-header">
-        <h1>To Do List</h1>
+        <h2>To Do List</h2>
         <%= link_to image_tag("plus.png", 
             class: "add-task-icon"), new_task_path %>
     </div>
@@ -13,7 +13,7 @@
     <div class="tasks">
         <% @tasks.each do |task| %>
             <div class="task-box">
-                <%= form_with model: task, url: task_path(task), method: :patch do |form| %>
+                <%= form_with model: task, method: :patch do |form| %>
                     <%= form.check_box :completed_status, 
                         class: "custom-checkbox", 
                         checked: task.completed_status, 

@@ -1,3 +1,20 @@
 <%# Form to edit task %>
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<div class="task-form-box">
+    <div>
+        <h1>Edit To Do</h1>
+    </div>
+    <%=form_with model: @task, class: "task-form", data: { turbo: false } do |form| %>
+        <div class="form-item">
+            <%= form.label :title %>
+            <%= form.text_area :title, 
+                class: "text-input"  %>
+        </div>
+        <div class="form-item">
+            <%= form.label :description %>
+            <%= form.text_area :description, 
+                class: "text-input" %>
+        </div>
+        <%= link_to "Delete Task", task_path(@task), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "button button-light" %>
+        <%= form.submit "Add Task", class: "button button-dark" %>
+    <% end %>
+</div>

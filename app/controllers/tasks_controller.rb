@@ -5,7 +5,7 @@ class TasksController < ApplicationController
 
   # Shows all tasks
   def index
-    @tasks = Task.all
+    @tasks = Task.order(completed_status: :asc, created_at: :desc)
   end
 
   # Shows individual task
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       # reditect someone on success
-      redirect_to task_path(@task)
+      redirect_to tasks_path
     else
       # render again on failure
       render :edit
