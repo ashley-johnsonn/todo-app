@@ -1,18 +1,32 @@
 <%# List all tasks %>
-<div class="">
-    <h1>To Do List</h1>
-    <%= link_to "New Task", new_task_path %>
-    <% @tasks.each do |task| %>
-        <%= link_to task_path(task) do %>
+<div class="index-box">
+    <h1><%= Time.now.strftime("%A, %b %d %Y") %></h1>
+    
+    <div class="list-header">
+        <h1>To Do List</h1>
+        <%= link_to image_tag("plus.png", 
+            class: "add-task-icon"), new_task_path %>
+    </div>
+
+    <hr class="custom-line">
+    
+    <div class="tasks">
+        <% @tasks.each do |task| %>
             <div class="task-box">
-            <input type="checkbox">
+                <%= form_with model: task, url: task_path(task), method: :patch do |form| %>
+                    <%= form.check_box :completed_status, 
+                        class: "custom-checkbox", 
+                        checked: task.completed_status, 
+                        onchange: "this.form.submit()" %>
+                <% end %>
+                <%# <input type="checkbox" class="custom-checkbox">               %>
                 <div class="task-info">
-                    <%= task.title %>
+                    <%= link_to task.title, task_path(task) %>
+                    <%= link_to image_tag("arrow.png", 
+                        class: "add-task-icon"), task_path(task) %>
                 </div>
-                <p>&#8594</p>
-            </div>
+            </div>        
         <% end %>
-    <% end %>
-        
+    </div>
     
 </div>
